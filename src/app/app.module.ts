@@ -17,11 +17,13 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {FormsModule} from "@angular/forms";
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
