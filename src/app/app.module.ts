@@ -18,6 +18,8 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {FormsModule} from "@angular/forms";
 import { TodoComponent } from './components/todo/todo.component';
+import {MatListModule} from "@angular/material/list";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { TodoComponent } from './components/todo/todo.component';
     MatNativeDateModule,
     MatChipsModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

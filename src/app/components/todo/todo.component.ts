@@ -10,30 +10,91 @@ import {Todo} from "../../../modules/todo";
 export class TodoComponent implements OnInit {
 
   task: Todo;
-  cardTypes: string[];
   cardType: string;
+  cardTypes: string[];
+  type: string;
+  taskListCurrent: Todo[];
+  taskListFinished: Todo[];
+  taskListUnsorted: Todo[];
+  toggle = true;
+  status = 'Enable';
 
   constructor(
     private _snackBar: MatSnackBar,
   ) {
     this.task = new Todo();
-    this.cardTypes = new Array<string>();
     this.cardType = '';
+    this.cardTypes = ['finished', 'current', 'unsorted'];
+    this.taskListCurrent = new Array<Todo>();
+    this.taskListFinished = new Array<Todo>();
+    this.taskListUnsorted = new Array<Todo>();
   }
 
   ngOnInit(): void {
-    this.show()
   }
 
-  show() {
-    console.log(this.task.notes, this.task.taskname)
+  enableDisableRule() {
+    this.toggle = !this.toggle;
+    this.status = this.toggle ? 'Enable' : 'Disable';
   }
 
-  //add a new user defined cardType to the array
-  addCardTypes(newCard: string) {
-    if (newCard) {
-      this.cardTypes.push(newCard); //add a new user defined cardType
+  getTaskType(type: any) {
+    this.type = type;
+  }
+
+  createTask(newTask: any) {
+    newTask.taskType = this.type;
+    this.addTaskToList(newTask)
+  }
+
+  addTaskToList(task: any) {
+    switch (this.type) {
+      case 'finished':
+        this.taskListFinished.push(task);
+        break;
+      case 'current':
+        this.taskListCurrent.push(task);
+        break;
+      case 'unsorted':
+        this.taskListUnsorted.push(task);
+        break;
     }
+
+    this.task = new Todo();
+  }
+
+  resortTask(data: any) {
+    this.taskListCurrent.filter((value, index) => {
+      if(data == value) {
+        this.taskListCurrent.splice(index,1)
+      }
+    })
+    this.taskListFinished.push(data);
+  }
+
+  resortTaskToCurrent(data: any) {
+    this.taskListFinished.filter((value, index) => {
+      if(data == value) {
+        this.taskListFinished.splice(index, 1)
+      }
+    })
+    this.taskListCurrent.push(data);
+  }
+
+  deleteTask(task: any) {
+    this.taskListFinished.filter((value, index) => {
+      if(task == value) {
+        this.taskListFinished.splice(index, 1)
+      }
+    })
+
+    this.taskListCurrent.filter((value, index) => {
+      if(task == value) {
+        this.taskListCurrent.splice(index,1)
+      }
+    })
+
+
   }
 
 }

@@ -5,12 +5,32 @@
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 html, body { height: 100%; width: 100%; }
-body { margin: 0; font-weight: lighter; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.tasks-list-header {
-  font-weight: lighter;
-}
+body { margin: 0; font-weight: lighter; display: flex; flex-direction: column; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .tasks-list-subheader {
   font-style: italic;
+}
+
+footer {
+  height: 100px;
+  flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  margin-top: 30px;
+}
+
+.info {
+  display: inline-block;
+  position: relative;
+  padding: 7px 2px;
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+
+.info .mat-list-item{
+  color: #f3efef;
+  font-weight: normal;
 }

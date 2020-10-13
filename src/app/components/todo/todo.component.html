@@ -22,7 +22,7 @@
         </mat-form-field>
         <mat-form-field class="mat-form-field-half" appearance="legacy">
           <mat-label>Start Date</mat-label>
-          <input matInput id="startDate" [matDatepicker]="pickerStart" ngModel="task.startDate">
+          <input matInput id="startDate" [matDatepicker]="pickerStart" [(ngModel)]="task.startDate">
           <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
           <mat-datepicker #pickerStart></mat-datepicker>
         </mat-form-field>
@@ -34,14 +34,20 @@
           <mat-datepicker #pickerDue></mat-datepicker>
         </mat-form-field>
         <mat-chip-list class="mat-chip-list">
-          <mat-chip class="mat-chip-item">Current</mat-chip>
-          <mat-chip class="mat-chip-item">Finished</mat-chip>
-          <mat-chip class="mat-chip-item">Unsorted</mat-chip>
+          <mat-chip class="mat-chip-item"
+                    *ngFor="let cardType of cardTypes" [style.background-color]="toggle ? 'green' : 'red'" (click)="getTaskType(cardType); enableDisableRule()"
+
+          >
+            {{cardType}}
+          </mat-chip>
+          <button mat-icon-button class="add-cardType-icon" aria-label="Button to add a new cardType">
+            <mat-icon>add</mat-icon>
+          </button>
         </mat-chip-list>
       </mat-card-content>
       <mat-card-actions class="mat-card-actions" align="end">
-        <button mat-stroked-button>Reset</button>
-        <button mat-stroked-button>Create</button>
+        <button mat-stroked-button type="reset">Reset</button>
+        <button mat-stroked-button type="submit" (click)="createTask(task)">Create</button>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -51,7 +57,20 @@
       <mat-card-title class="tasks-list-header">Current Tasks</mat-card-title>
       <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
       <mat-card-content>
-        This is a content
+        <mat-list>
+          <mat-list-item *ngFor="let task of taskListCurrent">
+            {{task.taskname}}
+            {{task.notes}}
+            Start: {{task.startDate | date: 'dd/MM/yyyy' }}
+            Ende: {{task.dueDate | date: 'dd/MM/yyyy'}}
+            <mat-checkbox (change)="resortTask(task)"></mat-checkbox>
+            <button mat-icon-button aria-label="Icon Button to delete task"
+            (click)="deleteTask(task)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </div>
@@ -61,7 +80,16 @@
       <mat-card-title class="tasks-list-header">Finished Tasks</mat-card-title>
       <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
       <mat-card-content>
-        This is a content
+        <mat-list>
+          <mat-list-item *ngFor="let task of taskListFinished">
+            {{task.taskname}}
+            {{task.notes}}
+            {{task.startDate}}
+            {{task.dueDate}}
+            <mat-checkbox [checked]="true" (change)="resortTaskToCurrent(task)"></mat-checkbox>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </div>
@@ -75,5 +103,26 @@
       </mat-card-content>
     </mat-card>
   </div>
-
+  <footer class="footer">
+    <div class="responsive">
+      <div class="info">
+        <mat-list class="mat-list-header">Contact</mat-list>
+        <mat-list-item>Imprint</mat-list-item>
+        <mat-list-item>Imprint</mat-list-item>
+        <mat-list-item>Imprint</mat-list-item>
+      </div>
+      <div class="info">
+        <mat-list class="mat-list-header">Contact</mat-list>
+        <mat-list-item>Imprint</mat-list-item>
+        <mat-list-item>Imprint</mat-list-item>
+        <mat-list-item>Imprint</mat-list-item>
+      </div>
+      <div class="info">
+        <mat-list class="mat-list-header">Contact</mat-list>
+        <mat-list-item>Imprint</mat-list-item>
+        <mat-list-item>Imprint</mat-list-item>
+        <mat-list-item>Imprint</mat-list-item>
+      </div>
+    </div>
+  </footer>
 </div>

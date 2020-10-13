@@ -5,5 +5,6 @@ export class Todo {
   notes: string;
   startDate: string;
   dueDate: string;
+  taskType: string;
 
 }
