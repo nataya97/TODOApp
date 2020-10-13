@@ -47,6 +47,10 @@ export class TodoComponent implements OnInit {
     this.addTaskToList(newTask)
   }
 
+  reset() {
+    this.task = new Todo();
+  }
+
   addTaskToList(task: any) {
     switch (this.type) {
       case 'finished':
@@ -63,7 +67,7 @@ export class TodoComponent implements OnInit {
     this.task = new Todo();
   }
 
-  resortTask(data: any) {
+  resortTaskToFinished(data: any) {
     this.taskListCurrent.filter((value, index) => {
       if(data == value) {
         this.taskListCurrent.splice(index,1)
@@ -81,19 +85,35 @@ export class TodoComponent implements OnInit {
     this.taskListCurrent.push(data);
   }
 
-  deleteTask(task: any) {
-    this.taskListFinished.filter((value, index) => {
-      if(task == value) {
-        this.taskListFinished.splice(index, 1)
-      }
-    })
+  resortTaskToUnsorted(data: any, tasktype: string) {
 
-    this.taskListCurrent.filter((value, index) => {
-      if(task == value) {
-        this.taskListCurrent.splice(index,1)
-      }
-    })
+  }
 
+  deleteTask(task: any, tasktype: string) {
+
+    switch (tasktype) {
+      case 'current':
+        this.taskListCurrent.filter((value, index) => {
+          if(task == value) {
+            this.taskListCurrent.splice(index,1)
+          }
+        })
+        break;
+      case 'finished':
+        this.taskListFinished.filter((value, index) => {
+          if(task == value) {
+            this.taskListFinished.splice(index, 1)
+          }
+        })
+        break;
+      case 'unsorted':
+        this.taskListUnsorted.filter((value, index) => {
+          if(task == value) {
+            this.taskListUnsorted.splice(index, 1)
+          }
+        })
+        break;
+    }
 
   }
 

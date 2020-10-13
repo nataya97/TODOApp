@@ -35,7 +35,8 @@
         </mat-form-field>
         <mat-chip-list class="mat-chip-list">
           <mat-chip class="mat-chip-item"
-                    *ngFor="let cardType of cardTypes" [style.background-color]="toggle ? 'green' : 'red'" (click)="getTaskType(cardType); enableDisableRule()"
+                    *ngFor="let cardType of cardTypes" [style.background-color]="toggle ? 'green' : 'red'"
+                    (click)="getTaskType(cardType); enableDisableRule()"
 
           >
             {{cardType}}
@@ -46,7 +47,7 @@
         </mat-chip-list>
       </mat-card-content>
       <mat-card-actions class="mat-card-actions" align="end">
-        <button mat-stroked-button type="reset">Reset</button>
+        <button mat-stroked-button type="reset" (click)="reset()">Reset</button>
         <button mat-stroked-button type="submit" (click)="createTask(task)">Create</button>
       </mat-card-actions>
     </mat-card>
@@ -58,17 +59,20 @@
       <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
       <mat-card-content>
         <mat-list>
-          <mat-list-item *ngFor="let task of taskListCurrent">
+          <mat-list-item class="mat-list-item" *ngFor="let task of taskListCurrent">
             {{task.taskname}}
+            <br>
             {{task.notes}}
-            Start: {{task.startDate | date: 'dd/MM/yyyy' }}
+            <br>
+            Beginn: {{task.startDate | date: 'dd/MM/yyyy' }} ||
             Ende: {{task.dueDate | date: 'dd/MM/yyyy'}}
-            <mat-checkbox (change)="resortTask(task)"></mat-checkbox>
+            <span class="icon-span"></span>
+            <mat-checkbox (change)="resortTaskToFinished(task)"></mat-checkbox>
             <button mat-icon-button aria-label="Icon Button to delete task"
-            (click)="deleteTask(task)">
+                    (click)="deleteTask(task, 'current')">
               <mat-icon>delete_outline</mat-icon>
             </button>
-            <mat-divider></mat-divider>
+            <mat-divider class="mat-divider"></mat-divider>
           </mat-list-item>
         </mat-list>
       </mat-card-content>
@@ -99,10 +103,25 @@
       <mat-card-title class="tasks-list-header">Unsorted Tasks</mat-card-title>
       <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
       <mat-card-content>
-        This is a content
+        <mat-list>
+          <mat-list-item *ngFor="let task of taskListUnsorted">
+            {{task.taskname}}
+            {{task.notes}}
+            Start: {{task.startDate | date: 'dd/MM/yyyy' }}
+            Ende: {{task.dueDate | date: 'dd/MM/yyyy'}}
+            <mat-checkbox (change)="resortTaskToFinished(task)"></mat-checkbox>
+            <mat-checkbox [checked]="true" (change)="resortTaskToCurrent(task)"></mat-checkbox>
+            <button mat-icon-button aria-label="Icon Button to delete task"
+                    (click)="deleteTask(task, 'unsorted')">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
       </mat-card-content>
     </mat-card>
   </div>
+
   <footer class="footer">
     <div class="responsive">
       <div class="info">
