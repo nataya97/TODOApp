@@ -20,6 +20,9 @@ import {FormsModule} from "@angular/forms";
 import { TodoComponent } from './components/todo/todo.component';
 import {MatListModule} from "@angular/material/list";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {TooltipModule} from "primeng/tooltip";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {ChartsModule} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatSnackBarModule,
     FormsModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    TooltipModule,
+    MatTooltipModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

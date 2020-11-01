@@ -37,10 +37,10 @@
   margin-right: 10px;
 }
 
-.mat-list-item {
-  margin: 15px 0 15px 0; //<top> <right> <bottom> <left>
+mat-list-item {
+  height: auto !important;
 }
 
-.mat-divider {
-  margin-top: 5px;
+.responsive {
+  height: min-content;
 }

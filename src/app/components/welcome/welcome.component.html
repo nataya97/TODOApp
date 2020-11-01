@@ -1,79 +1,40 @@
 <div class="body">
-  <mat-toolbar class="mat-toolbar">
-    <button mat-icon-button class="menu-icon" aria-label="Icon Button for the menu">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span class="menu-header">TODO APP</span>
-  </mat-toolbar>
-
-  <div class="create-task-card">
-    <mat-card>
-      <mat-card-title class="tasks-list-header">Create Tasks</mat-card-title>
-      <mat-card-subtitle class="tasks-list-subheader">Create and organize your tasks</mat-card-subtitle>
-      <mat-card-content>
-        <mat-form-field appearance="legacy" class="mat-form-field">
-          <mat-label>Task</mat-label>
-          <input matInput type="text" id="taskname" [(ngModel)]="task.taskname">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="legacy">
-          <mat-label>Notes</mat-label>
-          <textarea matInput></textarea>
-        </mat-form-field>
-        <mat-form-field class="mat-form-field-half" appearance="legacy">
-          <mat-label>Start Date</mat-label>
-          <input matInput [matDatepicker]="pickerStart">
-          <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
-          <mat-datepicker #pickerStart></mat-datepicker>
-        </mat-form-field>
-        <span class="mat-form-field-margin"></span>
-        <mat-form-field class="mat-form-field-half" appearance="legacy">
-          <mat-label>Due Date</mat-label>
-          <input matInput [matDatepicker]="pickerDue">
-          <mat-datepicker-toggle matSuffix [for]="pickerDue"></mat-datepicker-toggle>
-          <mat-datepicker #pickerDue></mat-datepicker>
-        </mat-form-field>
-        <mat-chip-list class="mat-chip-list">
-          <mat-chip class="mat-chip-item">Current</mat-chip>
-          <mat-chip class="mat-chip-item">Finished</mat-chip>
-          <mat-chip class="mat-chip-item">Unsorted</mat-chip>
-        </mat-chip-list>
-      </mat-card-content>
-      <mat-card-actions class="mat-card-actions" align="end">
-        <button mat-stroked-button>Reset</button>
-        <button mat-stroked-button>Create</button>
-      </mat-card-actions>
-    </mat-card>
+  <div class="header">TODO ANALYTICS</div>
+  <div class="analytics">
+    <h2 class="font-weight">Tasks per Day</h2>
+    <div class="canvas">
+      <canvas
+        baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType">
+      </canvas>
+    </div>
+    <h2 class="font-weight">Tasks per Month</h2>
+    <div class="canvas">
+      <canvas
+        baseChart *ngIf="barChartData"
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+    <span class="chart-span"></span>
+    <h2 class="font-weight">Divison of Types of Tasks</h2>
+    <div class="canvas">
+      <canvas
+        baseChart *ngIf="pieChartData"
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType">
+      </canvas>
+    </div>
+    <div class="button">
+      <button mat-flat-button (click)="goToTodo()">MANAGE TASKS</button>
+    </div>
   </div>
-
-  <div class="tasks-list-one">
-    <mat-card>
-      <mat-card-title class="tasks-list-header">Current Tasks</mat-card-title>
-      <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
-      <mat-card-content>
-        This is a content
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div class="tasks-list-two">
-    <mat-card>
-      <mat-card-title class="tasks-list-header">Finished Tasks</mat-card-title>
-      <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
-      <mat-card-content>
-        This is a content
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div class="tasks-list-three">
-    <mat-card>
-      <mat-card-title class="tasks-list-header">Unsorted Tasks</mat-card-title>
-      <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
-      <mat-card-content>
-        This is a content
-      </mat-card-content>
-    </mat-card>
-  </div>
-
 </div>

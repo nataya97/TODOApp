@@ -1,6 +1,6 @@
 <div class="body">
   <mat-toolbar class="mat-toolbar">
-    <button mat-icon-button class="menu-icon" aria-label="Icon Button for the menu">
+    <button mat-icon-button class="menu-icon" matTooltip="Menu" aria-label="Icon Button for the menu">
       <mat-icon>menu</mat-icon>
     </button>
     <span class="menu-header">TODO APP</span>
@@ -41,9 +41,6 @@
           >
             {{cardType}}
           </mat-chip>
-          <button mat-icon-button class="add-cardType-icon" aria-label="Button to add a new cardType">
-            <mat-icon>add</mat-icon>
-          </button>
         </mat-chip-list>
       </mat-card-content>
       <mat-card-actions class="mat-card-actions" align="end">
@@ -66,13 +63,12 @@
             <br>
             Beginn: {{task.startDate | date: 'dd/MM/yyyy' }} ||
             Ende: {{task.dueDate | date: 'dd/MM/yyyy'}}
-            <span class="icon-span"></span>
-            <mat-checkbox (change)="resortTaskToFinished(task)"></mat-checkbox>
-            <button mat-icon-button aria-label="Icon Button to delete task"
+            <mat-checkbox (change)="resortTaskToFinished(task)" matTooltip="Set Task To Finished"></mat-checkbox>
+            <button mat-icon-button aria-label="Icon Button to delete task" matTooltip="Delete Task"
                     (click)="deleteTask(task, 'current')">
               <mat-icon>delete_outline</mat-icon>
             </button>
-            <mat-divider class="mat-divider"></mat-divider>
+            <br>
           </mat-list-item>
         </mat-list>
       </mat-card-content>
@@ -121,7 +117,6 @@
       </mat-card-content>
     </mat-card>
   </div>
-
   <footer class="footer">
     <div class="responsive">
       <div class="info">
