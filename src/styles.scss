@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
-//@import "~@angular/material/prebuilt-themes/purple-green.css";
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 html, body { height: 100%; width: 100%; }
@@ -17,7 +16,7 @@ footer {
   padding: 10px;
   color: white;
   font-weight: bold;
-  background-color: black;
+  background-color: #424242;
   margin-top: 30px;
 }
 
@@ -38,4 +37,8 @@ footer {
 h2 {
   font-weight: lighter;
   text-align: center;
+}
+
+.mat-toolbar {
+  background-color: #424242;
 }

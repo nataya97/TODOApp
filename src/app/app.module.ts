@@ -23,6 +23,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {TooltipModule} from "primeng/tooltip";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {ChartsModule} from "ng2-charts";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {ChartsModule} from "ng2-charts";
     MatCheckboxModule,
     TooltipModule,
     MatTooltipModule,
-    ChartsModule
+    ChartsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

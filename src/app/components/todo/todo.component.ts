@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Todo} from "../../../modules/todo";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-todo',
@@ -15,27 +16,34 @@ export class TodoComponent implements OnInit {
   type: string;
   taskListCurrent: Todo[];
   taskListFinished: Todo[];
-  taskListUnsorted: Todo[];
-  toggle = true;
-  status = 'Enable';
 
   constructor(
     private _snackBar: MatSnackBar,
+    private route: Router,
   ) {
     this.task = new Todo();
     this.cardType = '';
-    this.cardTypes = ['finished', 'current', 'unsorted'];
+    this.cardTypes = ['finished', 'current'];
     this.taskListCurrent = new Array<Todo>();
     this.taskListFinished = new Array<Todo>();
-    this.taskListUnsorted = new Array<Todo>();
   }
 
   ngOnInit(): void {
   }
 
-  enableDisableRule() {
-    this.toggle = !this.toggle;
-    this.status = this.toggle ? 'Enable' : 'Disable';
+  navigate() {
+    this.route.navigate(['welcome']);
+  }
+
+  enableDisableRule(target: any) {
+    switch (target.innerText) {
+      case 'finished':
+        target.style.backgroundColor = '#7c6981';
+        break;
+      case 'current':
+        target.style.backgroundColor = '#6f868c';
+        break;
+    }
   }
 
   getTaskType(type: any) {
@@ -59,9 +67,6 @@ export class TodoComponent implements OnInit {
       case 'current':
         this.taskListCurrent.push(task);
         break;
-      case 'unsorted':
-        this.taskListUnsorted.push(task);
-        break;
     }
 
     this.task = new Todo();
@@ -69,8 +74,8 @@ export class TodoComponent implements OnInit {
 
   resortTaskToFinished(data: any) {
     this.taskListCurrent.filter((value, index) => {
-      if(data == value) {
-        this.taskListCurrent.splice(index,1)
+      if (data == value) {
+        this.taskListCurrent.splice(index, 1)
       }
     })
     this.taskListFinished.push(data);
@@ -78,15 +83,11 @@ export class TodoComponent implements OnInit {
 
   resortTaskToCurrent(data: any) {
     this.taskListFinished.filter((value, index) => {
-      if(data == value) {
+      if (data == value) {
         this.taskListFinished.splice(index, 1)
       }
     })
     this.taskListCurrent.push(data);
-  }
-
-  resortTaskToUnsorted(data: any, tasktype: string) {
-
   }
 
   deleteTask(task: any, tasktype: string) {
@@ -94,22 +95,15 @@ export class TodoComponent implements OnInit {
     switch (tasktype) {
       case 'current':
         this.taskListCurrent.filter((value, index) => {
-          if(task == value) {
-            this.taskListCurrent.splice(index,1)
+          if (task == value) {
+            this.taskListCurrent.splice(index, 1)
           }
         })
         break;
       case 'finished':
         this.taskListFinished.filter((value, index) => {
-          if(task == value) {
+          if (task == value) {
             this.taskListFinished.splice(index, 1)
-          }
-        })
-        break;
-      case 'unsorted':
-        this.taskListUnsorted.filter((value, index) => {
-          if(task == value) {
-            this.taskListUnsorted.splice(index, 1)
           }
         })
         break;
