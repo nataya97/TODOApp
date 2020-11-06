@@ -3,36 +3,13 @@
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-html, body { height: 100%; width: 100%; }
-body { margin: 0; font-weight: lighter; display: flex; flex-direction: column; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; width: 100%;}
+body { margin: 0; font-weight: lighter; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .tasks-list-subheader {
   font-style: italic;
 }
 
-footer {
-  height: 100px;
-  flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-  padding: 10px;
-  color: white;
-  font-weight: bold;
-  background-color: #424242;
-  margin-top: 30px;
-}
-
-.info {
-  display: inline-block;
-  position: relative;
-  padding: 7px 2px;
-  float: left;
-  width: 33%;
-  text-align: center;
-}
-
-.info .mat-list-item{
-  color: #f3efef;
-  font-weight: normal;
-}
 
 h2 {
   font-weight: lighter;
@@ -41,4 +18,34 @@ h2 {
 
 .mat-toolbar {
   background-color: #424242;
+}
+.mat-list-item-content::before{
+  content: "";
+  clear: both;
+}
+
+.mat-footer{
+  border-bottom: 0 !important;
+  margin: 1px !important;
+}
+.body{
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.footer-sticky{
+  background-color: #424242;
+  height: auto;
+  display: flex;
+  padding: 2px;
+}
+
+.mat-header{
+  color: white;
+  display: block;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
