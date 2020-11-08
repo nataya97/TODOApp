@@ -32,19 +32,20 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openSnackBar(message: string) {
+    let snackBar = this._snackBar.open(message)._dismissAfter(4000)
+  }
+
   navigate() {
     this.route.navigate(['welcome']);
   }
 
-  enableDisableRule(target: any) {
-    switch (target.innerText) {
-      case 'finished':
-        target.style.backgroundColor = '#7c6981';
-        break;
-      case 'current':
-        target.style.backgroundColor = '#6f868c';
-        break;
+  verifyDate(newTask: any) { //
+    if(newTask.dueDate < newTask.startDate) {
+      this.openSnackBar('The due date can not be before the start date!')
+      return false;
     }
+    return true;
   }
 
   getTaskType(type: any) {
@@ -53,7 +54,9 @@ export class TodoComponent implements OnInit {
 
   createTask(newTask: any) {
     newTask.taskType = this.type;
-    this.addTaskToList(newTask)
+    if (this.verifyDate(newTask)) { //
+      this.addTaskToList(newTask) //
+    }
   }
 
   reset() {
@@ -92,7 +95,6 @@ export class TodoComponent implements OnInit {
   }
 
   deleteTask(task: any, tasktype: string) {
-
     switch (tasktype) {
       case 'current':
         this.taskListCurrent.filter((value, index) => {

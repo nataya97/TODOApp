@@ -12,7 +12,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatNativeDateModule, MatRippleModule} from "@angular/material/core";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
@@ -31,29 +31,30 @@ import {MatMenuModule} from "@angular/material/menu";
     WelcomeComponent,
     TodoComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDividerModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatChipsModule,
-    MatSnackBarModule,
-    FormsModule,
-    MatListModule,
-    MatCheckboxModule,
-    TooltipModule,
-    MatTooltipModule,
-    ChartsModule,
-    MatMenuModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDividerModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatChipsModule,
+        MatSnackBarModule,
+        FormsModule,
+        MatListModule,
+        MatCheckboxModule,
+        TooltipModule,
+        MatTooltipModule,
+        ChartsModule,
+        MatMenuModule,
+        MatRippleModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

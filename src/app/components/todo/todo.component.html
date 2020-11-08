@@ -38,9 +38,9 @@
           <mat-datepicker #pickerDue></mat-datepicker>
         </mat-form-field>
         <mat-chip-list class="mat-chip-list">
-          <mat-chip class="mat-chip-item" [value]="cardType"
+          <mat-chip class="mat-chip-item" [value]="cardType" matRipple matRippleColor='#7c6981'
                     *ngFor="let cardType of cardTypes"
-                    (click)="getTaskType(cardType); enableDisableRule($event.target);"
+                    (click)="getTaskType(cardType);"
           >
             {{cardType}}
           </mat-chip>
@@ -106,22 +106,22 @@
     </mat-card>
   </div>
 
-<footer class="footer-sticky">
-  <mat-list class="mat-header"> Contact
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-  </mat-list>
-  <mat-list class="mat-header"> Contact
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-  </mat-list>
-  <mat-list class="mat-header"> Contact
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-    <mat-list-item class="mat-footer">Impressum</mat-list-item>
-  </mat-list>
-</footer>
+  <footer class="footer-sticky">
+    <mat-list class="mat-header"> Contact
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    </mat-list>
+    <mat-list class="mat-header"> Contact
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    </mat-list>
+    <mat-list class="mat-header"> Contact
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+      <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    </mat-list>
+  </footer>
 </div>
 
