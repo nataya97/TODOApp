@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Todo} from "../../../modules/todo";
 import {Router} from "@angular/router";
+import {MatChip} from "@angular/material/chips";
 
 @Component({
   selector: 'app-todo',

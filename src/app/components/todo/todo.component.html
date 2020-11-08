@@ -41,7 +41,6 @@
           <mat-chip class="mat-chip-item" [value]="cardType"
                     *ngFor="let cardType of cardTypes"
                     (click)="getTaskType(cardType); enableDisableRule($event.target);"
-
           >
             {{cardType}}
           </mat-chip>
@@ -60,7 +59,7 @@
       <mat-card-subtitle class="tasks-list-subheader">Organize your tasks</mat-card-subtitle>
       <mat-card-content>
         <mat-list>
-          <mat-list-item class="mat-list-item" *ngFor="let task of taskListCurrent" contenteditable="true">
+          <mat-list-item class="mat-list-item" *ngFor="let task of taskListCurrent">
             {{task.taskname}}
             <br>
             {{task.notes}}
@@ -107,26 +106,22 @@
     </mat-card>
   </div>
 
-  <footer class="footer">
-    <div class="responsive">
-      <div class="info">
-        <mat-list class="mat-list-header">Contact</mat-list>
-        <mat-list-item>Imprint</mat-list-item>
-        <mat-list-item>Imprint</mat-list-item>
-        <mat-list-item>Imprint</mat-list-item>
-      </div>
-      <div class="info">
-        <mat-list class="mat-list-header">Contact</mat-list>
-        <mat-list-item>Imprint</mat-list-item>
-        <mat-list-item>Imprint</mat-list-item>
-        <mat-list-item>Imprint</mat-list-item>
-      </div>
-      <div class="info">
-        <mat-list class="mat-list-header">Contact</mat-list>
-        <mat-list-item>Imprint</mat-list-item>
-        <mat-list-item>Imprint</mat-list-item>
-        <mat-list-item>Imprint</mat-list-item>
-      </div>
-    </div>
-  </footer>
+<footer class="footer-sticky">
+  <mat-list class="mat-header"> Contact
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+  </mat-list>
+  <mat-list class="mat-header"> Contact
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+  </mat-list>
+  <mat-list class="mat-header"> Contact
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+    <mat-list-item class="mat-footer">Impressum</mat-list-item>
+  </mat-list>
+</footer>
 </div>
+
