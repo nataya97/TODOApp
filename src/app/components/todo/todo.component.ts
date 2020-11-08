@@ -16,6 +16,7 @@ export class TodoComponent implements OnInit {
   type: string;
   taskListCurrent: Todo[];
   taskListFinished: Todo[];
+  other: string;
 
   constructor(
     private _snackBar: MatSnackBar,
